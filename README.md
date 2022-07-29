@@ -11,3 +11,5 @@ Supports Android 4.0 - 12.1
 Install the APK from the [releases section](https://github.com/whew-inc/FakeGApps/releases) and enable it in your Xposed framework provider. Make sure to enable FakeGapps in your Xposed framework provider.
 
 Reboot your device. If everything went right, MicroG should now have a checkmark next to "System spoofs signature" in its self-check.
+
+[FakeGApps is also available in the LSPosed repository](https://modules.lsposed.org/module/inc.whew.android.fakegapps)
