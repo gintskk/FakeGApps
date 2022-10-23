@@ -32,8 +32,20 @@ public class FakeSignatures implements IXposedHookLoadPackage {
             }
         };
 
-        String classToHook = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ?
-                "com.android.server.pm.ComputerEngine" : "com.android.server.pm.PackageManagerService";
+        String classToHook;
+        switch (Build.VERSION.SDK_INT) {
+            case Build.VERSION_CODES.TIRAMISU:
+                classToHook = "com.android.server.pm.ComputerEngine";
+                break;
+            case Build.VERSION_CODES.S_V2:
+            case Build.VERSION_CODES.S:
+                classToHook = "com.android.server.pm.PackageManagerService.ComputerEngine";
+                break;
+            default:
+                classToHook = "com.android.server.pm.PackageManagerService";
+                break;
+        }
+
         final Class<?> hookedClass = XposedHelpers.findClass(classToHook, loadedPackage.classLoader);
         XposedBridge.hookAllMethods(hookedClass, "generatePackageInfo", hook);
     }
