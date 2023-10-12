@@ -35,6 +35,7 @@ public class FakeSignatures implements IXposedHookLoadPackage {
         String classToHook;
         switch (Build.VERSION.SDK_INT) {
             case Build.VERSION_CODES.TIRAMISU:
+            case Build.VERSION_CODES.UPSIDE_DOWN_CAKE:
                 classToHook = "com.android.server.pm.ComputerEngine";
                 break;
             case Build.VERSION_CODES.S_V2:
